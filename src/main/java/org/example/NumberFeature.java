@@ -1,15 +1,42 @@
 package org.example;
-
 import java.util.Scanner;
 
-public class NumberFeature {
+public class Main {
     public static void main(String[] args) {
-        int inputNumber; // 输入的数字
-        int result = 0; // 输出结果
-        Scanner in = new Scanner(System.in);
-        inputNumber = in.nextInt();
-        // 你的代码逻辑
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println(result);
+        int jishu = 0;
+        int oushu = 0;
+
+        System.out.println("请输入一系列正整数，用空格作为分割，以 -1 结束：");
+
+        while (true) {
+            int number = scanner.nextInt(); // 读取用户输入
+                if(number>=100000||number<=0) {
+                    System.out.println("输入错误，数字区间在(0,100000)");
+                    break;
+                }
+            else if (number == -1) {
+                break;
+            }
+
+
+            if (number % 2 == 0) {
+                oushu++;
+            } else {
+                jishu++;
+            }
+        }
+
+        // 输出结果
+        System.out.println(jishu + " " + oushu);
+
+
     }
 }
+
+
+
+
+
+
