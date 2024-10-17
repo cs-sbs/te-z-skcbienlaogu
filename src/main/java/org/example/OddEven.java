@@ -1,42 +1,39 @@
 package org.example;
+
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int jishu = 0;
-        int oushu = 0;
-
-        System.out.println("请输入一系列正整数，用空格作为分割，以 -1 结束：");
-
-        while (true) {
-            int number = scanner.nextInt(); // 读取用户输入
-                if(number>=100000||number<=0) {
-                    System.out.println("输入错误，数字区间在(0,100000)");
-                    break;
-                }
-            else if (number == -1) {
-                break;
-            }
-
-
-            if (number % 2 == 0) {
-                oushu++;
-            } else {
-                jishu++;
-            }
+        Scanner shuru = new Scanner(System.in);
+        System.out.print("请输入一个非负整数：");
+        int number = shuru.nextInt();
+        if(number>=100000||number<0){
+            System.out.println("输入错误输入范围值是(0,100000)");
         }
-
-        // 输出结果
-        System.out.println(jishu + " " + oushu);
+        else if(number>0){
+            int result = cal(number);
+            System.out.println(result);
+        }
 
 
     }
+
+    public static int cal(int number) {
+        String num = String.valueOf(number);
+        int binaryValue = 0;
+
+        // 从个位开始遍历，位数从1开始
+        for (int i = 0; i < num.length(); i++) {
+            int digit = Character.getNumericValue(num.charAt(num.length() - 1 - i));
+            int position = i + 1; // 位数从1开始
+
+            // 判断数字和位数的奇偶性
+            if ((digit % 2) == (position % 2)) {
+                binaryValue += (1 << i); // 如果相同，则对应位加1
+            }
+        }
+
+        return binaryValue;
+    }
 }
-
-
-
-
-
-
