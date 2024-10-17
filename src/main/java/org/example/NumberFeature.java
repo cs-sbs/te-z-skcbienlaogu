@@ -8,8 +8,8 @@ public class NumberFeature {
         Scanner shuru = new Scanner(System.in);
 
         int number = shuru.nextInt();
-        if(number>100000||number<0){
-            System.out.println("输入错误输入范围值是(0,100000)");
+        if(number>1000000||number<0){
+            System.out.println("输入错误输入范围值是(0,1000000)");
         }
         else if(number>0){
             int result = cal(number);
